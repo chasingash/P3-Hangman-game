@@ -1,35 +1,42 @@
 import random
-from words import words
-import string
+from hangman_art import stages, logo
+from hangman_words import word_list
 
+print(logo)
+game_is_finished = False
+lives = len(stages) - 1
 
-def get_valid_word(words):
-    word = random.choice(words)
-    while '-' in word or ' ' in word:
-        word = random.choice(words)
+chosen_word = random.choice(word_list)
+word_length = len(chosen_word)
 
-    return word
+display = []
+for _ in range(word_length):
+    display += "_"
 
+while not game_is_finished:
+    guess = input("Guess a letter:\n").lower()
 
-def hangman():
-    word = get_valid_word(words)
-    word_letters = set(word)
+    #Use the clear() function imported from replit to clear the output between guesses.
+    clear()
+
+    if guess in display:
+        print(f"You've already guessed {guess}")
+
+    for position in range(word_length):
+        letter = chosen_word[position]
+        if letter == guess:
+            display[position] = letter
+    print(f"{' '.join(display)}")
+
+    if guess not in chosen_word:
+        print(f"You guessed {guess}, that's not in the word. You lose a life.")
+        lives -= 1
+        if lives == 0:
+            game_is_finished = True
+            print("You lose.")
     
-    alphabet = set(string.ascii_uppercase)
-    used_letters = set() # keep track of what the player has guessed
+    if not "_" in display:
+        game_is_finished = True
+        print("You win.")
 
-    # Get player input
-    user_letter = input('Guess a letter: ').upper()
-    if user_letter in alphabet - used_letters:
-        used_letters.add(user_letter)
-        if user_letter in word_letters:
-            word_letters.remove(user_letter)
-
-    elif user_letter in used_letters:
-        print('You have already guessed this character. Try again')
-
-    else:
-        print(("Not a valid character. Please try again"))
-
-user_input = input('Type something:')
-print(user_input)
+    print(stages[lives])
