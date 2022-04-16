@@ -13,11 +13,11 @@ def initialise_game():
     """
     Option to begin game or select difficulty
     """
-    print (" Press " + text_colors.BLUE + "1" + text_colors.WHITE +
+    print (" Press " + text_colors.BLUE + "P" + text_colors.WHITE +
            " to play game")
-    print (" Press " + text_colors.BLUE + "2" + text_colors.WHITE +
+    print (" Press " + text_colors.BLUE + "D" + text_colors.WHITE +
            " to set difficulty")
-    print(" Press " + text_colors.BLUE + "3" + text_colors.WHITE +
+    print(" Press " + text_colors.BLUE + "R" + text_colors.WHITE +
           " to view rules")
     options = False
     while not options:
