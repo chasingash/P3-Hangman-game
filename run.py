@@ -22,20 +22,20 @@ def initialise_game():
     options = False
     while not options:
         settings = input("\n ")
-        if settings == "1":
+        if settings == "P":
             options = True
             difficulty = "default"
             return difficulty
 
-        elif settings == "2":
+        elif settings == "D":
             options = True
 
-        elif settings == "3":
+        elif settings == "R":
             options = True
             game_rules()
 
         else:
-            print(text_colors.RED + " Please select 1, 2 or 3 to make your"
+            print(text_colors.RED + " Please select R, D or R to make your"
                   " choice" + text_colors.WHITE)
 
 
@@ -46,10 +46,10 @@ def select_difficulty():
     print("\n")
     print(" Select Difficulty\n")
     print(
-        " Press " + text_colors.BLUE + "E" + text_colors.WHITE + " for Easy"
+        " Press " + text_colors.BLUE + "E" + text_colors.WHITE + " for Easier"
         )
     print(
-        " Press " + text_colors.BLUE + "N" + text_colors.WHITE + " for Normal"
+        " Press " + text_colors.BLUE + "N" + text_colors.WHITE + " for Easy"
         )
     print(
         " Press " + text_colors.BLUE + "H" + text_colors.WHITE + " for Hard"
@@ -59,15 +59,15 @@ def select_difficulty():
         options = input("\n ").upper()
         if options == "E":
             difficulty = True
-            num_lives = 10
+            num_lives = 12
             return num_lives
         elif options == "N":
             difficulty = True
-            num_lives = 7
+            num_lives = 9
             return num_lives
         elif options == "H":
             difficulty = True
-            num_lives = 5
+            num_lives = 6
             return num_lives
         else:
             print(text_colors.RED + "\n Please select E, N or H to make your"
